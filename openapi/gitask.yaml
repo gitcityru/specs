@@ -1,0 +1,2147 @@
+---
+openapi: 3.0.0
+info:
+  title: ""
+  description: Система управления задачами
+  version: "1.0"
+servers:
+  url: https://gitdata.ru/api/v1/data
+  description: GitData
+paths:
+  /tasks:
+    get:
+      summary: Returns a list of Tasks
+      responses:
+        200:
+          description: A JSON array of Tasks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tasks'
+    post:
+      summary: Creates a new record of Tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tasks'
+      responses:
+        201:
+          description: Created record of Tasks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tasks'
+        400:
+          description: The specified tasks`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /tasks/{id}:
+    get:
+      summary: Returns a record of Tasks by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of Tasks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tasks'
+        400:
+          description: The specified tasks`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Taskswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of Tasks by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tasks'
+      responses:
+        200:
+          description: Updated record of Tasks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tasks'
+        400:
+          description: The specified tasks`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Taskswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /tasks/{id}/delete:
+    post:
+      summary: Deletes a record of Tasks by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified tasks`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A Taskswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /users:
+    get:
+      summary: Returns a list of Users
+      responses:
+        200:
+          description: A JSON array of Users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+    post:
+      summary: Creates a new record of Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+      responses:
+        201:
+          description: Created record of Users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+        400:
+          description: The specified users`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /users/{id}:
+    get:
+      summary: Returns a record of Users by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of Users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+        400:
+          description: The specified users`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Userswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of Users by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+      responses:
+        200:
+          description: Updated record of Users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+        400:
+          description: The specified users`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Userswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /users/{id}/delete:
+    post:
+      summary: Deletes a record of Users by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified users`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A Userswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /projects:
+    get:
+      summary: Returns a list of Projects
+      responses:
+        200:
+          description: A JSON array of Projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects'
+    post:
+      summary: Creates a new record of Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Projects'
+      responses:
+        201:
+          description: Created record of Projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects'
+        400:
+          description: The specified projects`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /projects/{id}:
+    get:
+      summary: Returns a record of Projects by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of Projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects'
+        400:
+          description: The specified projects`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Projectswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of Projects by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Projects'
+      responses:
+        200:
+          description: Updated record of Projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Projects'
+        400:
+          description: The specified projects`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Projectswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /projects/{id}/delete:
+    post:
+      summary: Deletes a record of Projects by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified projects`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A Projectswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /clients:
+    get:
+      summary: Returns a list of Clients
+      responses:
+        200:
+          description: A JSON array of Clients
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clients'
+    post:
+      summary: Creates a new record of Clients
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Clients'
+      responses:
+        201:
+          description: Created record of Clients
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clients'
+        400:
+          description: The specified clients`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /clients/{id}:
+    get:
+      summary: Returns a record of Clients by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of Clients
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clients'
+        400:
+          description: The specified clients`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Clientswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of Clients by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Clients'
+      responses:
+        200:
+          description: Updated record of Clients
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Clients'
+        400:
+          description: The specified clients`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Clientswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /clients/{id}/delete:
+    post:
+      summary: Deletes a record of Clients by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified clients`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A Clientswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /role:
+    get:
+      summary: Returns a list of Role
+      responses:
+        200:
+          description: A JSON array of Role
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+    post:
+      summary: Creates a new record of Role
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Role'
+      responses:
+        201:
+          description: Created record of Role
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+        400:
+          description: The specified role`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /role/{id}:
+    get:
+      summary: Returns a record of Role by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of Role
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+        400:
+          description: The specified role`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Rolewith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of Role by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Role'
+      responses:
+        200:
+          description: Updated record of Role
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+        400:
+          description: The specified role`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Rolewith the specified ID was not found
+        default:
+          description: Unexpected error
+  /role/{id}/delete:
+    post:
+      summary: Deletes a record of Role by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified role`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A Rolewith the specified ID was not found
+        default:
+          description: Unexpected error
+  /sprints:
+    get:
+      summary: Returns a list of Sprints
+      responses:
+        200:
+          description: A JSON array of Sprints
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sprints'
+    post:
+      summary: Creates a new record of Sprints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sprints'
+      responses:
+        201:
+          description: Created record of Sprints
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sprints'
+        400:
+          description: The specified sprints`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /sprints/{id}:
+    get:
+      summary: Returns a record of Sprints by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of Sprints
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sprints'
+        400:
+          description: The specified sprints`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Sprintswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of Sprints by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sprints'
+      responses:
+        200:
+          description: Updated record of Sprints
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Sprints'
+        400:
+          description: The specified sprints`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Sprintswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /sprints/{id}/delete:
+    post:
+      summary: Deletes a record of Sprints by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified sprints`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A Sprintswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /task_statuses:
+    get:
+      summary: Returns a list of TaskStatuses
+      responses:
+        200:
+          description: A JSON array of TaskStatuses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatuses'
+    post:
+      summary: Creates a new record of TaskStatuses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskStatuses'
+      responses:
+        201:
+          description: Created record of TaskStatuses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatuses'
+        400:
+          description: The specified task_statuses`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /task_statuses/{id}:
+    get:
+      summary: Returns a record of TaskStatuses by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of TaskStatuses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatuses'
+        400:
+          description: The specified task_statuses`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskStatuseswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of TaskStatuses by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskStatuses'
+      responses:
+        200:
+          description: Updated record of TaskStatuses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskStatuses'
+        400:
+          description: The specified task_statuses`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskStatuseswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /task_statuses/{id}/delete:
+    post:
+      summary: Deletes a record of TaskStatuses by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified task_statuses`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskStatuseswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /project_statuses:
+    get:
+      summary: Returns a list of ProjectStatuses
+      responses:
+        200:
+          description: A JSON array of ProjectStatuses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatuses'
+    post:
+      summary: Creates a new record of ProjectStatuses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatuses'
+      responses:
+        201:
+          description: Created record of ProjectStatuses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatuses'
+        400:
+          description: The specified project_statuses`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /project_statuses/{id}:
+    get:
+      summary: Returns a record of ProjectStatuses by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of ProjectStatuses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatuses'
+        400:
+          description: The specified project_statuses`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A ProjectStatuseswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of ProjectStatuses by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectStatuses'
+      responses:
+        200:
+          description: Updated record of ProjectStatuses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectStatuses'
+        400:
+          description: The specified project_statuses`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A ProjectStatuseswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /project_statuses/{id}/delete:
+    post:
+      summary: Deletes a record of ProjectStatuses by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified project_statuses`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A ProjectStatuseswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /task_types:
+    get:
+      summary: Returns a list of TaskTypes
+      responses:
+        200:
+          description: A JSON array of TaskTypes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskTypes'
+    post:
+      summary: Creates a new record of TaskTypes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskTypes'
+      responses:
+        201:
+          description: Created record of TaskTypes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskTypes'
+        400:
+          description: The specified task_types`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /task_types/{id}:
+    get:
+      summary: Returns a record of TaskTypes by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of TaskTypes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskTypes'
+        400:
+          description: The specified task_types`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskTypeswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of TaskTypes by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskTypes'
+      responses:
+        200:
+          description: Updated record of TaskTypes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskTypes'
+        400:
+          description: The specified task_types`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskTypeswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /task_types/{id}/delete:
+    post:
+      summary: Deletes a record of TaskTypes by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified task_types`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskTypeswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /priorities:
+    get:
+      summary: Returns a list of Priorities
+      responses:
+        200:
+          description: A JSON array of Priorities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Priorities'
+    post:
+      summary: Creates a new record of Priorities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Priorities'
+      responses:
+        201:
+          description: Created record of Priorities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Priorities'
+        400:
+          description: The specified priorities`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /priorities/{id}:
+    get:
+      summary: Returns a record of Priorities by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of Priorities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Priorities'
+        400:
+          description: The specified priorities`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Prioritieswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of Priorities by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Priorities'
+      responses:
+        200:
+          description: Updated record of Priorities
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Priorities'
+        400:
+          description: The specified priorities`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Prioritieswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /priorities/{id}/delete:
+    post:
+      summary: Deletes a record of Priorities by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified priorities`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A Prioritieswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /task_comments:
+    get:
+      summary: Returns a list of TaskComments
+      responses:
+        200:
+          description: A JSON array of TaskComments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskComments'
+    post:
+      summary: Creates a new record of TaskComments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskComments'
+      responses:
+        201:
+          description: Created record of TaskComments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskComments'
+        400:
+          description: The specified task_comments`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /task_comments/{id}:
+    get:
+      summary: Returns a record of TaskComments by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of TaskComments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskComments'
+        400:
+          description: The specified task_comments`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskCommentswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of TaskComments by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskComments'
+      responses:
+        200:
+          description: Updated record of TaskComments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskComments'
+        400:
+          description: The specified task_comments`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskCommentswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /task_comments/{id}/delete:
+    post:
+      summary: Deletes a record of TaskComments by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified task_comments`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskCommentswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /project_users:
+    get:
+      summary: Returns a list of ProjectUsers
+      responses:
+        200:
+          description: A JSON array of ProjectUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectUsers'
+    post:
+      summary: Creates a new record of ProjectUsers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectUsers'
+      responses:
+        201:
+          description: Created record of ProjectUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectUsers'
+        400:
+          description: The specified project_users`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /project_users/{id}:
+    get:
+      summary: Returns a record of ProjectUsers by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of ProjectUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectUsers'
+        400:
+          description: The specified project_users`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A ProjectUserswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of ProjectUsers by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectUsers'
+      responses:
+        200:
+          description: Updated record of ProjectUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectUsers'
+        400:
+          description: The specified project_users`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A ProjectUserswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /project_users/{id}/delete:
+    post:
+      summary: Deletes a record of ProjectUsers by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified project_users`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A ProjectUserswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /task_users:
+    get:
+      summary: Returns a list of TaskUsers
+      responses:
+        200:
+          description: A JSON array of TaskUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskUsers'
+    post:
+      summary: Creates a new record of TaskUsers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskUsers'
+      responses:
+        201:
+          description: Created record of TaskUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskUsers'
+        400:
+          description: The specified task_users`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /task_users/{id}:
+    get:
+      summary: Returns a record of TaskUsers by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of TaskUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskUsers'
+        400:
+          description: The specified task_users`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskUserswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of TaskUsers by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskUsers'
+      responses:
+        200:
+          description: Updated record of TaskUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskUsers'
+        400:
+          description: The specified task_users`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskUserswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /task_users/{id}/delete:
+    post:
+      summary: Deletes a record of TaskUsers by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified task_users`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A TaskUserswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /permissions:
+    get:
+      summary: Returns a list of Permissions
+      responses:
+        200:
+          description: A JSON array of Permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+    post:
+      summary: Creates a new record of Permissions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Permissions'
+      responses:
+        201:
+          description: Created record of Permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+        400:
+          description: The specified permissions`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /permissions/{id}:
+    get:
+      summary: Returns a record of Permissions by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of Permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+        400:
+          description: The specified permissions`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Permissionswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of Permissions by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Permissions'
+      responses:
+        200:
+          description: Updated record of Permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permissions'
+        400:
+          description: The specified permissions`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Permissionswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /permissions/{id}/delete:
+    post:
+      summary: Deletes a record of Permissions by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified permissions`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A Permissionswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /queues:
+    get:
+      summary: Returns a list of Queues
+      responses:
+        200:
+          description: A JSON array of Queues
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Queues'
+    post:
+      summary: Creates a new record of Queues
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Queues'
+      responses:
+        201:
+          description: Created record of Queues
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Queues'
+        400:
+          description: The specified queues`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /queues/{id}:
+    get:
+      summary: Returns a record of Queues by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of Queues
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Queues'
+        400:
+          description: The specified queues`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Queueswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of Queues by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Queues'
+      responses:
+        200:
+          description: Updated record of Queues
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Queues'
+        400:
+          description: The specified queues`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A Queueswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /queues/{id}/delete:
+    post:
+      summary: Deletes a record of Queues by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified queues`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A Queueswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /queue_users:
+    get:
+      summary: Returns a list of QueueUsers
+      responses:
+        200:
+          description: A JSON array of QueueUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueueUsers'
+    post:
+      summary: Creates a new record of QueueUsers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueueUsers'
+      responses:
+        201:
+          description: Created record of QueueUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueueUsers'
+        400:
+          description: The specified queue_users`s properties are invalid
+        403:
+          description: No permissions for operation
+        default:
+          description: Unexpected error
+  /queue_users/{id}:
+    get:
+      summary: Returns a record of QueueUsers by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: A record of QueueUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueueUsers'
+        400:
+          description: The specified queue_users`s ID are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A QueueUserswith the specified ID was not found
+        default:
+          description: Unexpected error
+    post:
+      summary: Update a record of QueueUsers by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueueUsers'
+      responses:
+        200:
+          description: Updated record of QueueUsers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueueUsers'
+        400:
+          description: The specified queue_users`s properties are invalid
+        403:
+          description: No permissions for operation
+        404:
+          description: A QueueUserswith the specified ID was not found
+        default:
+          description: Unexpected error
+  /queue_users/{id}/delete:
+    post:
+      summary: Deletes a record of QueueUsers by ID
+      parameters:
+        -in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        202:
+          description: Results of operation
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: The specified queue_users`s ID is invalid (not a number)
+        403:
+          description: No permissions for operation
+        404:
+          description: A QueueUserswith the specified ID was not found
+        default:
+          description: Unexpected error
+components:
+  schemas:
+    Tasks:
+      type: object
+      description: Задачи
+      properties:
+        id:
+          type: guid
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: text
+        is_active:
+          type: boolean
+        created_at:
+          type: timestamp
+        changed_at:
+          type: timestamp
+        project_id:
+          type: integer
+        task_id:
+          type: integer
+        created_by:
+          type: integer
+        changed_by:
+          type: integer
+        sprint_id:
+          type: integer
+        status_id:
+          type: integer
+        proirity_id:
+          type: integer
+        type_id:
+          type: integer
+      required:
+      - id
+      - code
+      - name
+      - project_id
+      - status_id
+      - type_id
+    Users:
+      type: object
+      description: Пользователи
+      properties:
+        id:
+          type: guid
+        name:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        is_active:
+          type: boolean
+        created_at:
+          type: timestamp
+        updated_at:
+          type: timestamp
+        role_id:
+          type: integer
+      required:
+      - id
+      - name
+      - username
+      - email
+      - role_id
+    Projects:
+      type: object
+      description: Проекты
+      properties:
+        id:
+          type: guid
+        name:
+          type: string
+        code:
+          type: string
+        is_active:
+          type: boolean
+        created_at:
+          type: timestamp
+        changed_at:
+          type: timestamp
+        description:
+          type: text
+        start_at:
+          type: timestamp
+        end_at:
+          type: timestamp
+        status_id:
+          type: integer
+        owner_id:
+          type: integer
+        created_by:
+          type: integer
+        changed_by:
+          type: integer
+      required:
+      - id
+      - name
+      - code
+    Clients:
+      type: object
+      description: Клиенты
+      properties:
+        id:
+          type: guid
+        name:
+          type: string
+        is_active:
+          type: boolean
+        created_at:
+          type: timestamp
+        changed_at:
+          type: timestamp
+        created_by:
+          type: integer
+        changed_by:
+          type: integer
+        code:
+          type: string
+      required:
+      - id
+      - name
+      - code
+    Role:
+      type: object
+      description: Роль пользователя
+      properties:
+        id:
+          type: guid
+        code:
+          type: string
+        name:
+          type: string
+        sort:
+          type: integer
+        is_active:
+          type: boolean
+      required:
+      - id
+      - code
+      - name
+    Sprints:
+      type: object
+      description: Спринты
+      properties:
+        id:
+          type: guid
+        name:
+          type: string
+        date_start_at:
+          type: timestamp
+        date_end_at:
+          type: timestamp
+        is_active:
+          type: boolean
+        created_by:
+          type: integer
+        created_at:
+          type: timestamp
+        project_id:
+          type: integer
+      required:
+      - id
+      - name
+      - date_start_at
+      - date_end_at
+      - project_id
+    TaskStatuses:
+      type: object
+      description: Статусы задач
+      properties:
+        id:
+          type: guid
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: text
+        sort:
+          type: integer
+        is_active:
+          type: boolean
+      required:
+      - id
+      - code
+      - name
+    ProjectStatuses:
+      type: object
+      description: Статусы проектов
+      properties:
+        id:
+          type: guid
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: text
+        sort:
+          type: integer
+        is_active:
+          type: boolean
+      required:
+      - id
+      - code
+      - name
+    TaskTypes:
+      type: object
+      description: Типы задач
+      properties:
+        id:
+          type: guid
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: text
+        sort:
+          type: integer
+        is_active:
+          type: boolean
+      required:
+      - id
+      - code
+      - name
+    Priorities:
+      type: object
+      description: Приоритет задач
+      properties:
+        id:
+          type: guid
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: text
+        sort:
+          type: integer
+        is_active:
+          type: boolean
+      required:
+      - id
+      - code
+      - name
+    TaskComments:
+      type: object
+      description: Комментарии к задачам
+      properties:
+        id:
+          type: guid
+        task_id:
+          type: integer
+        comment:
+          type: text
+        created_by:
+          type: integer
+        created_at:
+          type: timestamp
+      required:
+      - id
+      - task_id
+      - comment
+    ProjectUsers:
+      type: object
+      description: Команда проекта
+      properties:
+        project_id:
+          type: integer
+        id:
+          type: guid
+        user_id:
+          type: integer
+        permission_id:
+          type: integer
+      required:
+      - project_id
+      - id
+      - user_id
+      - permission_id
+    TaskUsers:
+      type: object
+      description: Команда задачи
+      properties:
+        id:
+          type: guid
+        task_id:
+          type: integer
+        user_id:
+          type: integer
+        permission_id:
+          type: integer
+      required:
+      - id
+      - user_id
+    Permissions:
+      type: object
+      description: Права доступа
+      properties:
+        id:
+          type: guid
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: text
+        sort:
+          type: integer
+      required:
+      - id
+      - code
+      - name
+    Queues:
+      type: object
+      description: Очереди задач
+      properties:
+        id:
+          type: guid
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: text
+        project_id:
+          type: integer
+      required:
+      - id
+      - code
+      - name
+      - project_id
+    QueueUsers:
+      type: object
+      description: Команда очереди
+      properties:
+        id:
+          type: guid
+        queue_id:
+          type: integer
+        user_id:
+          type: integer
+      required:
+      - id
+      - queue_id
+      - user_id
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  bearerAuth: []
+...
